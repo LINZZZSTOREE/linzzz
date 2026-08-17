@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bot WhatsApp Free — LINZZZSTOREE</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="brand" style="font-size:16px;">LINZZZ<span>STOREE</span></span>
+      <button class="icon-btn" onclick="closeSidebar()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <a class="nav-item" href="index.html">Beranda</a>
+    <a class="nav-item" href="bot-free.html">Bot WhatsApp Free</a>
+  </aside>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-btn" id="hamburgerBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <span class="brand topbar-title">LINZZZ<span>STOREE</span></span>
+    </div>
+    <div class="topbar-right">
+      <div id="authArea" style="display:flex; gap:10px;"></div>
+      <button class="icon-btn" id="accountBtn" title="Akun">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+      <div class="account-pop" id="accountPop">
+        <div class="avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="email" id="accountEmail">user@gmail.com</div>
+        <div class="status" id="accountStatus">Belum login</div>
+        <button class="btn" id="logoutBtn" style="display:none; width:100%; margin-top:6px;">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <h1>Bot WhatsApp Free</h1>
+      <p>Selamat datang! Bot kamu siap digunakan.</p>
+    </div>
+
+    <div class="service-card" style="max-width:420px;">
+      <span class="badge">FREE</span>
+      <h3>Status Bot</h3>
+      <ul>
+        <li>Status: <b style="color:var(--blue)">Aktif</b></li>
+        <li>Fitur terbatas</li>
+        <li>Durasi 24 Jam</li>
+      </ul>
+      <p style="color:var(--text-dim); font-size:13px;">
+        Fitur lanjutan (koneksi WhatsApp, QR scan, dsb) akan menyusul — ini masih pondasi login/registrasi.
+      </p>
+    </div>
+  </main>
+
+  <script src="assets/js/config.js"></script>
+  <script>
+    // Guard: kalau belum login, lempar ke halaman login
+    if (!getToken()) window.location.href = "login.html";
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

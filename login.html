@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — LINZZZSTOREE</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <h1 class="auth-title">Welcome back to <span>linzzzstoree</span></h1>
+      <p class="auth-sub">Masuk untuk melanjutkan</p>
+
+      <form id="loginForm">
+        <div class="field">
+          <label>Username</label>
+          <div class="field-input">
+            <input type="text" id="loginUsername" placeholder="Masukkan username" autocomplete="username">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Password</label>
+          <div class="field-input">
+            <input type="password" id="loginPassword" placeholder="Masukkan password" autocomplete="current-password">
+            <svg id="loginEyeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="form-msg" id="loginMsg"></div>
+        <button type="submit" class="btn btn-primary auth-submit">Login</button>
+      </form>
+
+      <div class="auth-foot">Belum punya akun? <a href="signup.html">Sign Up</a></div>
+      <div class="auth-foot"><a href="index.html">&larr; Kembali ke beranda</a></div>
+    </div>
+  </div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>
