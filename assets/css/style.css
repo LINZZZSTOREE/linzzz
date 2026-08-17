@@ -112,6 +112,16 @@ input{ font-family: inherit; }
 .account-pop .email{ font-size:13px; color: var(--text-dim); word-break: break-all; }
 .account-pop .status{ font-size:12px; color: var(--blue); font-weight:600; }
 
+/* ===== Stats banner ===== */
+.stats-banner{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom: 24px; }
+.stats-chip{
+  display:flex; align-items:center; gap:8px;
+  background: var(--card); border:1px solid var(--card-border); border-radius: 10px;
+  padding: 8px 16px; font-size:13px;
+}
+.stats-chip .stats-label{ color: var(--text-dim); }
+.stats-chip .stats-value{ color: var(--blue); font-weight:700; }
+
 /* ===== Layout / cards ===== */
 .container{ max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 .hero{ margin-bottom: 30px; }
