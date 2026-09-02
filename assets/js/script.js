@@ -21,6 +21,7 @@ function openSidebar() {
 
     document.body.style.overflow =
         "hidden";
+
 }
 
 
@@ -32,6 +33,7 @@ function hideSidebar() {
 
     document.body.style.overflow =
         "";
+
 }
 
 
@@ -53,22 +55,148 @@ sidebarOverlay.addEventListener(
 );
 
 
-// ================= MODAL =================
+
+// ================= NAVIGATION =================
+
+const bottomItems =
+    document.querySelectorAll(
+        ".bottom-item"
+    );
+
+
+const sidebarLinks =
+    document.querySelectorAll(
+        ".sidebar-link"
+    );
+
+
+function setActiveNavigation(
+    section
+) {
+
+    bottomItems.forEach(
+        (item) => {
+
+            item.classList.toggle(
+                "active",
+                item.dataset.section
+                === section
+            );
+
+        }
+    );
+
+
+    sidebarLinks.forEach(
+        (item) => {
+
+            item.classList.toggle(
+                "active",
+                item.dataset.section
+                === section
+            );
+
+        }
+    );
+
+}
+
+
+
+document
+    .querySelectorAll(
+        '[data-section]'
+    )
+    .forEach(
+        (item) => {
+
+            item.addEventListener(
+                "click",
+                () => {
+
+                    const section =
+                        item.dataset.section;
+
+                    setActiveNavigation(
+                        section
+                    );
+
+                    hideSidebar();
+
+                }
+            );
+
+        }
+    );
+
+
+
+// ================= AUTO ACTIVE ON SCROLL =================
+
+const homeSection =
+    document.getElementById(
+        "home"
+    );
+
+
+const infoSection =
+    document.getElementById(
+        "info"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const infoTop =
+            infoSection
+                .getBoundingClientRect()
+                .top;
+
+
+        if (
+            infoTop
+            <
+            window.innerHeight * 0.6
+        ) {
+
+            setActiveNavigation(
+                "info"
+            );
+
+        } else {
+
+            setActiveNavigation(
+                "home"
+            );
+
+        }
+
+    }
+);
+
+
+
+// ================= CARD POPUP =================
 
 const cards =
     document.querySelectorAll(
         ".service-card"
     );
 
+
 const modalWrapper =
     document.getElementById(
         "modalWrapper"
     );
 
+
 const modalTitle =
     document.getElementById(
         "modalTitle"
     );
+
 
 const modalClose =
     document.getElementById(
@@ -76,7 +204,9 @@ const modalClose =
     );
 
 
-function openModal(featureName) {
+function openModal(
+    featureName
+) {
 
     modalTitle.textContent =
         `${featureName} Sedang Dibuat`;
@@ -87,6 +217,7 @@ function openModal(featureName) {
 
     document.body.style.overflow =
         "hidden";
+
 }
 
 
@@ -98,24 +229,26 @@ function closeModal() {
 
     document.body.style.overflow =
         "";
+
 }
 
 
-cards.forEach((card) => {
+cards.forEach(
+    (card) => {
 
-    card.addEventListener(
-        "click",
-        () => {
+        card.addEventListener(
+            "click",
+            () => {
 
-            const featureName =
-                card.dataset.feature;
+                openModal(
+                    card.dataset.feature
+                );
 
-            openModal(featureName);
+            }
+        );
 
-        }
-    );
-
-});
+    }
+);
 
 
 modalClose.addEventListener(
@@ -139,6 +272,7 @@ modalWrapper.addEventListener(
 
     }
 );
+
 
 
 // ================= ESC =================
