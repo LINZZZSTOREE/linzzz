@@ -13,7 +13,12 @@ const sidebarOverlay =
     document.getElementById("sidebarOverlay");
 
 
+// BUKA SIDEBAR
 function openSidebar() {
+
+    if (!sidebar || !sidebarOverlay) {
+        return;
+    }
 
     sidebar.classList.add("show");
 
@@ -21,11 +26,15 @@ function openSidebar() {
 
     document.body.style.overflow =
         "hidden";
-
 }
 
 
+// TUTUP SIDEBAR
 function hideSidebar() {
+
+    if (!sidebar || !sidebarOverlay) {
+        return;
+    }
 
     sidebar.classList.remove("show");
 
@@ -37,148 +46,64 @@ function hideSidebar() {
 }
 
 
-menuBtn.addEventListener(
-    "click",
-    openSidebar
-);
+// MENU BUTTON
+if (menuBtn) {
 
-
-closeSidebar.addEventListener(
-    "click",
-    hideSidebar
-);
-
-
-sidebarOverlay.addEventListener(
-    "click",
-    hideSidebar
-);
-
-
-
-// ================= NAVIGATION =================
-
-const bottomItems =
-    document.querySelectorAll(
-        ".bottom-item"
+    menuBtn.addEventListener(
+        "click",
+        openSidebar
     );
 
+}
 
+
+// CLOSE BUTTON
+if (closeSidebar) {
+
+    closeSidebar.addEventListener(
+        "click",
+        hideSidebar
+    );
+
+}
+
+
+// OVERLAY
+if (sidebarOverlay) {
+
+    sidebarOverlay.addEventListener(
+        "click",
+        hideSidebar
+    );
+
+}
+
+
+// TUTUP SIDEBAR SAAT LINK DIKLIK
 const sidebarLinks =
     document.querySelectorAll(
         ".sidebar-link"
     );
 
 
-function setActiveNavigation(
-    section
-) {
+sidebarLinks.forEach(
+    (link) => {
 
-    bottomItems.forEach(
-        (item) => {
+        link.addEventListener(
+            "click",
+            () => {
 
-            item.classList.toggle(
-                "active",
-                item.dataset.section
-                === section
-            );
+                hideSidebar();
 
-        }
-    );
-
-
-    sidebarLinks.forEach(
-        (item) => {
-
-            item.classList.toggle(
-                "active",
-                item.dataset.section
-                === section
-            );
-
-        }
-    );
-
-}
-
-
-
-document
-    .querySelectorAll(
-        '[data-section]'
-    )
-    .forEach(
-        (item) => {
-
-            item.addEventListener(
-                "click",
-                () => {
-
-                    const section =
-                        item.dataset.section;
-
-                    setActiveNavigation(
-                        section
-                    );
-
-                    hideSidebar();
-
-                }
-            );
-
-        }
-    );
-
-
-
-// ================= AUTO ACTIVE ON SCROLL =================
-
-const homeSection =
-    document.getElementById(
-        "home"
-    );
-
-
-const infoSection =
-    document.getElementById(
-        "info"
-    );
-
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        const infoTop =
-            infoSection
-                .getBoundingClientRect()
-                .top;
-
-
-        if (
-            infoTop
-            <
-            window.innerHeight * 0.6
-        ) {
-
-            setActiveNavigation(
-                "info"
-            );
-
-        } else {
-
-            setActiveNavigation(
-                "home"
-            );
-
-        }
+            }
+        );
 
     }
 );
 
 
 
-// ================= CARD POPUP =================
+// ================= POPUP =================
 
 const cards =
     document.querySelectorAll(
@@ -204,9 +129,15 @@ const modalClose =
     );
 
 
-function openModal(
-    featureName
-) {
+// BUKA POPUP
+function openModal(featureName) {
+
+    if (
+        !modalWrapper ||
+        !modalTitle
+    ) {
+        return;
+    }
 
     modalTitle.textContent =
         `${featureName} Sedang Dibuat`;
@@ -221,7 +152,12 @@ function openModal(
 }
 
 
+// TUTUP POPUP
 function closeModal() {
+
+    if (!modalWrapper) {
+        return;
+    }
 
     modalWrapper.classList.remove(
         "show"
@@ -233,6 +169,7 @@ function closeModal() {
 }
 
 
+// CARD CLICK
 cards.forEach(
     (card) => {
 
@@ -240,8 +177,11 @@ cards.forEach(
             "click",
             () => {
 
+                const featureName =
+                    card.dataset.feature;
+
                 openModal(
-                    card.dataset.feature
+                    featureName
                 );
 
             }
@@ -251,31 +191,40 @@ cards.forEach(
 );
 
 
-modalClose.addEventListener(
-    "click",
-    closeModal
-);
+// TOMBOL OKE
+if (modalClose) {
+
+    modalClose.addEventListener(
+        "click",
+        closeModal
+    );
+
+}
 
 
-modalWrapper.addEventListener(
-    "click",
-    (event) => {
+// CLICK AREA LUAR POPUP
+if (modalWrapper) {
 
-        if (
-            event.target
-            === modalWrapper
-        ) {
+    modalWrapper.addEventListener(
+        "click",
+        (event) => {
 
-            closeModal();
+            if (
+                event.target
+                === modalWrapper
+            ) {
+
+                closeModal();
+
+            }
 
         }
+    );
 
-    }
-);
+}
 
 
-
-// ================= ESC =================
+// ================= ESC BUTTON =================
 
 document.addEventListener(
     "keydown",
