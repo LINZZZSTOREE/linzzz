@@ -1,6 +1,10 @@
+/* ================= ROOT ================= */
+
 :root {
 
     --bg: #090d14;
+
+    --bg-secondary: #0d131d;
 
     --card: #111927;
 
@@ -16,6 +20,8 @@
     --text: #f5f7fb;
 
     --text-soft: #919cad;
+
+    --green: #57dc89;
 
     --header-height: 68px;
 
@@ -40,8 +46,6 @@
 html {
 
     scroll-behavior: smooth;
-
-    scroll-padding-top: 90px;
 
 }
 
@@ -129,17 +133,13 @@ svg {
 }
 
 
+/* MENU BUTTON */
+
 .menu-btn {
 
     width: 42px;
 
     height: 42px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
 
     border: none;
 
@@ -153,7 +153,15 @@ svg {
 
     font-size: 22px;
 
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
     cursor: pointer;
+
+    transition: 0.2s;
 
 }
 
@@ -165,6 +173,8 @@ svg {
 
 }
 
+
+/* BRAND */
 
 .brand {
 
@@ -203,7 +213,8 @@ svg {
 
     z-index: 300;
 
-    background: #0c111b;
+    background:
+        #0c111b;
 
     border-right:
         1px solid var(--border);
@@ -225,17 +236,19 @@ svg {
 }
 
 
+/* SIDEBAR HEADER */
+
 .sidebar-header {
 
     height: 70px;
+
+    padding: 0 20px;
 
     display: flex;
 
     align-items: center;
 
     justify-content: space-between;
-
-    padding: 0 20px;
 
     border-bottom:
         1px solid var(--border);
@@ -257,6 +270,8 @@ svg {
 
 }
 
+
+/* SIDEBAR CLOSE */
 
 .close-sidebar {
 
@@ -280,6 +295,8 @@ svg {
 }
 
 
+/* SIDEBAR MENU */
+
 .sidebar-menu {
 
     padding: 18px 14px;
@@ -297,9 +314,9 @@ svg {
 
     gap: 14px;
 
-    padding: 14px 15px;
-
     margin-bottom: 7px;
+
+    padding: 14px 15px;
 
     border-radius: 13px;
 
@@ -327,10 +344,10 @@ svg {
 
 .sidebar-link:hover {
 
+    color: white;
+
     background:
         rgba(49, 130, 255, 0.08);
-
-    color: white;
 
 }
 
@@ -352,6 +369,8 @@ svg {
 }
 
 
+/* ================= SIDEBAR OVERLAY ================= */
+
 .sidebar-overlay {
 
     position: fixed;
@@ -363,7 +382,8 @@ svg {
     background:
         rgba(0, 0, 0, 0.62);
 
-    backdrop-filter: blur(3px);
+    backdrop-filter:
+        blur(3px);
 
     opacity: 0;
 
@@ -396,16 +416,7 @@ svg {
     padding:
         calc(var(--header-height) + 38px)
         18px
-        calc(var(--bottom-height) + 50px);
-
-}
-
-
-/* ================= HOME ================= */
-
-.home-section {
-
-    min-height: 75vh;
+        calc(var(--bottom-height) + 45px);
 
 }
 
@@ -463,20 +474,21 @@ svg {
 }
 
 
-/* ================= GRID ================= */
+/* ================= SERVICE GRID ================= */
 
 .service-grid {
 
     display: grid;
 
-    grid-template-columns: 1fr;
+    grid-template-columns:
+        1fr;
 
     gap: 20px;
 
 }
 
 
-/* ================= CARD ================= */
+/* ================= SERVICE CARD ================= */
 
 .service-card {
 
@@ -517,17 +529,21 @@ svg {
 }
 
 
+/* CARD IMAGE */
+
 .card-image {
 
     width: 100%;
 
-    aspect-ratio: 16 / 9;
+    aspect-ratio:
+        16 / 9;
 
     position: relative;
 
     overflow: hidden;
 
-    background: #111827;
+    background:
+        #111827;
 
 }
 
@@ -557,6 +573,8 @@ svg {
 }
 
 
+/* IMAGE OVERLAY */
+
 .image-overlay {
 
     position: absolute;
@@ -572,6 +590,8 @@ svg {
 
 }
 
+
+/* CARD ICON */
 
 .card-icon {
 
@@ -600,14 +620,18 @@ svg {
         1px solid
         rgba(92, 160, 255, 0.3);
 
-    backdrop-filter: blur(10px);
+    backdrop-filter:
+        blur(10px);
 
-    color: #78b2ff;
+    color:
+        #78b2ff;
 
     font-size: 19px;
 
 }
 
+
+/* ================= CARD CONTENT ================= */
 
 .card-content {
 
@@ -635,9 +659,9 @@ svg {
 
 .card-content h2 {
 
-    font-size: 17px;
-
     margin-bottom: 7px;
+
+    font-size: 17px;
 
 }
 
@@ -653,6 +677,8 @@ svg {
 }
 
 
+/* CARD ARROW */
+
 .card-arrow {
 
     width: 40px;
@@ -663,64 +689,97 @@ svg {
 
     display: flex;
 
-    justify-content: center;
-
     align-items: center;
+
+    justify-content: center;
 
     border-radius: 12px;
 
     background:
         rgba(49, 130, 255, 0.1);
 
-    color: var(--blue-light);
+    color:
+        var(--blue-light);
+
+    transition: 0.2s;
 
 }
 
 
-/* ================= INFO SECTION ================= */
+.service-card:hover
+.card-arrow {
 
-.info-section {
+    background:
+        var(--blue);
 
-    padding-top: 65px;
-
-    padding-bottom: 30px;
-
-}
-
-
-.section-label {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    margin-bottom: 14px;
-
-    color: var(--blue-light);
-
-    font-size: 13px;
-
-    font-weight: 600;
+    color: white;
 
 }
 
 
-.section-label svg {
+/* ================= INFO PAGE ================= */
 
-    width: 19px;
+.info-page {
 
-    height: 19px;
+    min-height: 100vh;
 
 }
 
+
+/* INFO HEADER */
+
+.info-header {
+
+    margin-bottom: 30px;
+
+}
+
+
+.info-header h1 {
+
+    margin-top: 5px;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        clamp(
+            28px,
+            8vw,
+            42px
+        );
+
+    letter-spacing: 1px;
+
+}
+
+
+.info-header p {
+
+    margin-top: 8px;
+
+    color:
+        var(--text-soft);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* ================= DEVELOPER CARD ================= */
 
 .developer-card {
 
     position: relative;
 
     overflow: hidden;
+
+    padding: 22px;
+
+    border-radius: 20px;
 
     background:
         linear-gradient(
@@ -733,10 +792,6 @@ svg {
         1px solid
         rgba(255, 255, 255, 0.08);
 
-    border-radius: 20px;
-
-    padding: 22px;
-
     box-shadow:
         0 15px 40px
         rgba(0, 0, 0, 0.22);
@@ -744,29 +799,34 @@ svg {
 }
 
 
+/* BLUE GLOW */
+
 .developer-card::before {
 
     content: "";
 
     position: absolute;
 
-    width: 170px;
-
-    height: 170px;
-
     top: -80px;
 
     right: -70px;
+
+    width: 170px;
+
+    height: 170px;
 
     border-radius: 50%;
 
     background:
         rgba(49, 130, 255, 0.08);
 
-    filter: blur(5px);
+    filter:
+        blur(5px);
 
 }
 
+
+/* DEVELOPER ICON */
 
 .developer-icon {
 
@@ -774,13 +834,13 @@ svg {
 
     height: 48px;
 
+    margin-bottom: 17px;
+
     display: flex;
 
     justify-content: center;
 
     align-items: center;
-
-    margin-bottom: 17px;
 
     border-radius: 14px;
 
@@ -791,7 +851,8 @@ svg {
         1px solid
         rgba(49, 130, 255, 0.25);
 
-    color: var(--blue-light);
+    color:
+        var(--blue-light);
 
 }
 
@@ -805,7 +866,11 @@ svg {
 }
 
 
+/* INFO DEVELOPER TITLE */
+
 .developer-card h2 {
+
+    margin-bottom: 20px;
 
     font-family:
         "Orbitron",
@@ -815,10 +880,10 @@ svg {
 
     letter-spacing: 0.6px;
 
-    margin-bottom: 20px;
-
 }
 
+
+/* DEVELOPER INFO */
 
 .developer-info {
 
@@ -850,7 +915,8 @@ svg {
 
 .info-name {
 
-    color: var(--text-soft);
+    color:
+        var(--text-soft);
 
     font-size: 13px;
 
@@ -870,6 +936,8 @@ svg {
 }
 
 
+/* ================= STATUS ONLINE ================= */
+
 .status-online {
 
     display: flex;
@@ -878,7 +946,8 @@ svg {
 
     gap: 7px;
 
-    color: #79e6a0;
+    color:
+        #79e6a0;
 
     font-size: 13px;
 
@@ -895,7 +964,8 @@ svg {
 
     border-radius: 50%;
 
-    background: #57dc89;
+    background:
+        var(--green);
 
     box-shadow:
         0 0 10px
@@ -923,7 +993,8 @@ svg {
 
     max-width: 600px;
 
-    height: var(--bottom-height);
+    min-height:
+        var(--bottom-height);
 
     display: grid;
 
@@ -931,7 +1002,8 @@ svg {
         repeat(2, 1fr);
 
     padding:
-        7px 12px
+        7px
+        12px
         max(
             7px,
             env(safe-area-inset-bottom)
@@ -944,7 +1016,8 @@ svg {
         1px solid
         rgba(255, 255, 255, 0.07);
 
-    backdrop-filter: blur(18px);
+    backdrop-filter:
+        blur(18px);
 
     -webkit-backdrop-filter:
         blur(18px);
@@ -966,7 +1039,8 @@ svg {
 
     border-radius: 13px;
 
-    color: #707c8f;
+    color:
+        #707c8f;
 
     text-decoration: none;
 
@@ -990,7 +1064,8 @@ svg {
 
 .bottom-item.active {
 
-    color: var(--blue-light);
+    color:
+        var(--blue-light);
 
     background:
         rgba(49, 130, 255, 0.07);
@@ -1019,7 +1094,8 @@ svg {
     background:
         rgba(0, 0, 0, 0.72);
 
-    backdrop-filter: blur(6px);
+    backdrop-filter:
+        blur(6px);
 
     opacity: 0;
 
@@ -1039,15 +1115,22 @@ svg {
 }
 
 
+/* MODAL BOX */
+
 .modal {
 
     width: 100%;
 
     max-width: 360px;
 
+    padding:
+        30px
+        22px
+        22px;
+
     text-align: center;
 
-    padding: 30px 22px 22px;
+    border-radius: 22px;
 
     background:
         linear-gradient(
@@ -1060,15 +1143,15 @@ svg {
         1px solid
         rgba(255, 255, 255, 0.08);
 
-    border-radius: 22px;
-
     box-shadow:
         0 30px 80px
         rgba(0, 0, 0, 0.55);
 
-    transform: scale(0.9);
+    transform:
+        scale(0.9);
 
-    transition: 0.25s;
+    transition:
+        0.25s;
 
 }
 
@@ -1076,10 +1159,13 @@ svg {
 .modal-wrapper.show
 .modal {
 
-    transform: scale(1);
+    transform:
+        scale(1);
 
 }
 
+
+/* MODAL ICON */
 
 .modal-icon {
 
@@ -1088,7 +1174,8 @@ svg {
     height: 65px;
 
     margin:
-        0 auto 18px;
+        0 auto
+        18px;
 
     display: flex;
 
@@ -1105,7 +1192,8 @@ svg {
         1px solid
         rgba(49, 130, 255, 0.24);
 
-    color: var(--blue-light);
+    color:
+        var(--blue-light);
 
     font-size: 27px;
 
@@ -1114,16 +1202,17 @@ svg {
 
 .modal h2 {
 
-    font-size: 20px;
-
     margin-bottom: 10px;
+
+    font-size: 20px;
 
 }
 
 
 .modal p {
 
-    color: var(--text-soft);
+    color:
+        var(--text-soft);
 
     font-size: 13px;
 
@@ -1131,6 +1220,8 @@ svg {
 
 }
 
+
+/* MODAL BUTTON */
 
 .modal-button {
 
@@ -1201,4 +1292,28 @@ svg {
 
     }
 
+}
+
+
+/* ================= DESKTOP ================= */
+
+@media (min-width: 1100px) {
+
+    .main-content {
+
+        padding-top:
+            calc(
+                var(--header-height)
+                + 55px
+            );
+
     }
+
+
+    .service-card {
+
+        border-radius: 22px;
+
+    }
+
+}
