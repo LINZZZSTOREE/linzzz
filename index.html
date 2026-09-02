@@ -10,12 +10,12 @@
 
     <meta
         name="theme-color"
-        content="#0a0f18"
+        content="#090d14"
     >
 
     <title>LINZZZSTOREE</title>
 
-    <!-- Google Fonts -->
+    <!-- FONT -->
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -32,13 +32,12 @@
         rel="stylesheet"
     >
 
-    <!-- Font Awesome -->
+    <!-- FONT AWESOME -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
-    <!-- CSS -->
     <link
         rel="stylesheet"
         href="assets/css/style.css"
@@ -47,7 +46,9 @@
 
 <body>
 
-    <!-- HEADER -->
+
+    <!-- ================= HEADER ================= -->
+
     <header class="header">
 
         <button
@@ -59,7 +60,7 @@
         </button>
 
         <a
-            href="#"
+            href="#home"
             class="brand"
         >
             LINZZZSTOREE
@@ -68,14 +69,18 @@
     </header>
 
 
-    <!-- SIDEBAR OVERLAY -->
+
+    <!-- ================= SIDEBAR OVERLAY ================= -->
+
     <div
         class="sidebar-overlay"
         id="sidebarOverlay"
     ></div>
 
 
-    <!-- SIDEBAR -->
+
+    <!-- ================= SIDEBAR ================= -->
+
     <aside
         class="sidebar"
         id="sidebar"
@@ -90,7 +95,6 @@
             <button
                 class="close-sidebar"
                 id="closeSidebar"
-                aria-label="Tutup sidebar"
             >
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -100,143 +104,412 @@
 
         <nav class="sidebar-menu">
 
+
+            <!-- HOME -->
+
             <a
-                href="#"
+                href="#home"
                 class="sidebar-link active"
+                data-section="home"
             >
-                <i class="fa-solid fa-house"></i>
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M3 11.5L12 4l9 7.5"
+                    />
+
+                    <path
+                        d="M5.5 10v9.5h5v-6h3v6h5V10"
+                    />
+                </svg>
 
                 <span>
-                    Dashboard
+                    Home
                 </span>
+
             </a>
+
+
+
+            <!-- INFO -->
+
+            <a
+                href="#info"
+                class="sidebar-link"
+                data-section="info"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                    />
+
+                    <path
+                        d="M12 10.5v6"
+                    />
+
+                    <path
+                        d="M12 7.5h.01"
+                    />
+
+                </svg>
+
+                <span>
+                    Info
+                </span>
+
+            </a>
+
 
         </nav>
 
     </aside>
 
 
-    <!-- MAIN -->
+
+    <!-- ================= MAIN ================= -->
+
     <main class="main-content">
 
-        <!-- WELCOME -->
-        <section class="welcome">
 
-            <span class="welcome-small">
-                Welcome to
-            </span>
+        <!-- ================= HOME ================= -->
 
-            <h1>
-                LINZZZSTOREE
-            </h1>
+        <section
+            class="home-section"
+            id="home"
+        >
 
-            <p>
-                Digital Store & Online Tools
-            </p>
+
+            <div class="welcome">
+
+                <span class="welcome-small">
+                    Welcome to
+                </span>
+
+                <h1>
+                    LINZZZSTOREE
+                </h1>
+
+                <p>
+                    Digital Store & Online Tools
+                </p>
+
+            </div>
+
+
+
+            <!-- CARDS -->
+
+            <div class="service-grid">
+
+
+                <!-- DIGITAL STORE -->
+
+                <article
+                    class="service-card"
+                    data-feature="Digital Store"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="assets/images/background/digital_store.png"
+                            alt="Digital Store"
+                        >
+
+                        <div class="image-overlay"></div>
+
+                        <div class="card-icon">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-content">
+
+                        <div class="card-text">
+
+                            <h2>
+                                Digital Store
+                            </h2>
+
+                            <p>
+                                Produk dan layanan digital LINZZZSTOREE.
+                            </p>
+
+                        </div>
+
+
+                        <div class="card-arrow">
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- TOOLS -->
+
+                <article
+                    class="service-card"
+                    data-feature="Tools"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="assets/images/background/tools.png"
+                            alt="Tools"
+                        >
+
+                        <div class="image-overlay"></div>
+
+                        <div class="card-icon">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-content">
+
+                        <div class="card-text">
+
+                            <h2>
+                                Tools
+                            </h2>
+
+                            <p>
+                                Berbagai tools online yang bisa kamu gunakan.
+                            </p>
+
+                        </div>
+
+
+                        <div class="card-arrow">
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
 
         </section>
 
 
-        <!-- CARDS -->
-        <section class="service-grid">
+
+        <!-- ================= INFO ================= -->
+
+        <section
+            class="info-section"
+            id="info"
+        >
+
+            <div class="section-label">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                    />
+
+                    <path
+                        d="M12 10.5v6"
+                    />
+
+                    <path
+                        d="M12 7.5h.01"
+                    />
+
+                </svg>
+
+                <span>
+                    Information
+                </span>
+
+            </div>
 
 
-            <!-- DIGITAL STORE -->
-            <article
-                class="service-card"
-                data-feature="Digital Store"
-            >
+            <div class="developer-card">
 
-                <div class="card-image">
 
-                    <img
-                        src="assets/images/background/digital_store.png"
-                        alt="Digital Store"
+                <div class="developer-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
                     >
 
-                    <div class="image-overlay"></div>
+                        <path
+                            d="M8.5 9L5 12l3.5 3"
+                        />
 
-                    <div class="card-icon">
-                        <i class="fa-solid fa-store"></i>
-                    </div>
+                        <path
+                            d="M15.5 9L19 12l-3.5 3"
+                        />
 
-                </div>
+                        <path
+                            d="M14 6l-4 12"
+                        />
 
-
-                <div class="card-content">
-
-                    <div class="card-text">
-
-                        <h2>
-                            Digital Store
-                        </h2>
-
-                        <p>
-                            Produk dan layanan digital LINZZZSTOREE.
-                        </p>
-
-                    </div>
-
-                    <div class="card-arrow">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- TOOLS -->
-            <article
-                class="service-card"
-                data-feature="Tools"
-            >
-
-                <div class="card-image">
-
-                    <img
-                        src="assets/images/background/tools.png"
-                        alt="Tools"
-                    >
-
-                    <div class="image-overlay"></div>
-
-                    <div class="card-icon">
-                        <i class="fa-solid fa-screwdriver-wrench"></i>
-                    </div>
+                    </svg>
 
                 </div>
 
 
-                <div class="card-content">
+                <h2>
+                    Info Developer
+                </h2>
 
-                    <div class="card-text">
 
-                        <h2>
-                            Tools
-                        </h2>
+                <div class="developer-info">
 
-                        <p>
-                            Berbagai tools online yang bisa kamu gunakan.
-                        </p>
+
+                    <div class="info-row">
+
+                        <span class="info-name">
+                            Developer Website
+                        </span>
+
+                        <span class="info-value">
+                            Lintang Thanaka W.
+                        </span>
 
                     </div>
 
-                    <div class="card-arrow">
-                        <i class="fa-solid fa-arrow-right"></i>
+
+                    <div class="info-row">
+
+                        <span class="info-name">
+                            Status Website
+                        </span>
+
+                        <span class="status-online">
+
+                            <span class="status-dot"></span>
+
+                            Online
+
+                        </span>
+
                     </div>
+
 
                 </div>
 
-            </article>
 
+            </div>
 
         </section>
+
 
     </main>
 
 
-    <!-- POPUP -->
+
+    <!-- ================= BOTTOM NAV / FOOTER ================= -->
+
+    <footer class="bottom-nav">
+
+
+        <!-- HOME -->
+
+        <a
+            href="#home"
+            class="bottom-item active"
+            data-section="home"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+
+                <path
+                    d="M3 11.5L12 4l9 7.5"
+                />
+
+                <path
+                    d="M5.5 10v9.5h5v-6h3v6h5V10"
+                />
+
+            </svg>
+
+            <span>
+                Home
+            </span>
+
+        </a>
+
+
+
+        <!-- INFO -->
+
+        <a
+            href="#info"
+            class="bottom-item"
+            data-section="info"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                />
+
+                <path
+                    d="M12 10.5v6"
+                />
+
+                <path
+                    d="M12 7.5h.01"
+                />
+
+            </svg>
+
+            <span>
+                Info
+            </span>
+
+        </a>
+
+
+    </footer>
+
+
+
+    <!-- ================= POPUP ================= -->
+
     <div
         class="modal-wrapper"
         id="modalWrapper"
@@ -245,7 +518,9 @@
         <div class="modal">
 
             <div class="modal-icon">
+
                 <i class="fa-solid fa-code"></i>
+
             </div>
 
             <h2 id="modalTitle">
@@ -269,10 +544,10 @@
     </div>
 
 
-    <!-- JS -->
+
     <script
         src="assets/js/script.js"
     ></script>
 
 </body>
-  </html>
+</html>
