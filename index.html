@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#0b0f17"
+    >
+
+    <title>LINZZZSTOREE</title>
+
+    <!-- Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Icon -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Buka sidebar"
+        >
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <a href="#" class="brand">
+            LINZZZSTOREE
+        </a>
+
+    </header>
+
+
+    <!-- ================= OVERLAY ================= -->
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="sidebar-header">
+
+            <span class="sidebar-brand">
+                LINZZZSTOREE
+            </span>
+
+            <button
+                class="close-sidebar"
+                id="closeSidebar"
+                aria-label="Tutup sidebar"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a
+                href="#"
+                class="sidebar-link active"
+            >
+                <i class="fa-solid fa-house"></i>
+
+                <span>
+                    Dashboard
+                </span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="main-content">
+
+        <!-- INTRO -->
+        <section class="welcome">
+
+            <span class="welcome-small">
+                Welcome to
+            </span>
+
+            <h1>
+                LINZZZSTOREE
+            </h1>
+
+            <p>
+                Digital Store & Online Tools
+            </p>
+
+        </section>
+
+
+        <!-- ================= CARDS ================= -->
+        <section class="service-grid">
+
+
+            <!-- DIGITAL STORE -->
+            <article
+                class="service-card"
+                data-feature="Digital Store"
+            >
+
+                <div class="card-image">
+
+                    <img
+                        src="https://picsum.photos/900/506?random=21"
+                        alt="Digital Store"
+                    >
+
+                    <div class="image-overlay"></div>
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <div>
+
+                        <h2>
+                            Digital Store
+                        </h2>
+
+                        <p>
+                            Produk dan layanan digital LINZZZSTOREE.
+                        </p>
+
+                    </div>
+
+                    <div class="card-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- TOOLS -->
+            <article
+                class="service-card"
+                data-feature="Tools"
+            >
+
+                <div class="card-image">
+
+                    <img
+                        src="https://picsum.photos/900/506?random=27"
+                        alt="Tools"
+                    >
+
+                    <div class="image-overlay"></div>
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <div>
+
+                        <h2>
+                            Tools
+                        </h2>
+
+                        <p>
+                            Berbagai tools online yang bisa kamu gunakan.
+                        </p>
+
+                    </div>
+
+                    <div class="card-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= POPUP ================= -->
+    <div
+        class="modal-wrapper"
+        id="modalWrapper"
+    >
+
+        <div class="modal">
+
+            <div class="modal-icon">
+                <i class="fa-solid fa-code"></i>
+            </div>
+
+            <h2 id="modalTitle">
+                Sedang Dibuat
+            </h2>
+
+            <p>
+                Fitur ini sedang dalam tahap pengembangan.
+                Tunggu update selanjutnya ya.
+            </p>
+
+            <button
+                class="modal-button"
+                id="modalClose"
+            >
+                Oke
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
