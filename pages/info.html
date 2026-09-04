@@ -1,282 +1,114 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="theme-color"
-        content="#090d14"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090d14">
     <title>Info - LINZZZSTOREE</title>
 
-    <!-- GOOGLE FONT -->
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- FONT AWESOME -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
-
-    <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="../assets/css/style.css"
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+<header class="header">
+    <button class="menu-btn" id="menuBtn" aria-label="Buka sidebar">
+        <i class="fa-solid fa-bars"></i>
+    </button>
 
-    <header class="header">
+    <a href="../index.html" class="brand">LINZZZSTOREE</a>
+</header>
 
-        <button
-            class="menu-btn"
-            id="menuBtn"
-            aria-label="Buka sidebar"
-        >
-            <i class="fa-solid fa-bars"></i>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <span class="sidebar-brand">LINZZZSTOREE</span>
+
+        <button class="close-sidebar" id="closeSidebar" aria-label="Tutup sidebar">
+            <i class="fa-solid fa-xmark"></i>
         </button>
+    </div>
 
-        <a
-            href="../index.html"
-            class="brand"
-        >
-            LINZZZSTOREE
-        </a>
-
-    </header>
-
-
-    <!-- ================= SIDEBAR OVERLAY ================= -->
-
-    <div
-        class="sidebar-overlay"
-        id="sidebarOverlay"
-    ></div>
-
-
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside
-        class="sidebar"
-        id="sidebar"
-    >
-
-        <div class="sidebar-header">
-
-            <span class="sidebar-brand">
-                LINZZZSTOREE
-            </span>
-
-            <button
-                class="close-sidebar"
-                id="closeSidebar"
-                aria-label="Tutup sidebar"
-            >
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-        </div>
-
-
-        <nav class="sidebar-menu">
-
-            <!-- HOME -->
-            <a
-                href="../index.html"
-                class="sidebar-link"
-            >
-
-                <svg viewBox="0 0 24 24">
-                    <path d="M3 11.5L12 4l9 7.5"/>
-                    <path d="M5.5 10v9.5h5v-6h3v6h5V10"/>
-                </svg>
-
-                <span>
-                    Home
-                </span>
-
-            </a>
-
-
-            <!-- INFO -->
-            <a
-                href="info.html"
-                class="sidebar-link active"
-            >
-
-                <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="9"/>
-                    <path d="M12 10.5v6"/>
-                    <path d="M12 7.5h.01"/>
-                </svg>
-
-                <span>
-                    Info
-                </span>
-
-            </a>
-
-        </nav>
-
-    </aside>
-
-
-    <!-- ================= MAIN ================= -->
-
-    <main class="main-content info-page">
-
-        <!-- INFO HEADER -->
-        <section class="info-header">
-
-            <span class="welcome-small">
-                Information
-            </span>
-
-            <h1>
-                INFO
-            </h1>
-
-            <p>
-                Informasi mengenai website LINZZZSTOREE.
-            </p>
-
-        </section>
-
-
-        <!-- ================= DEVELOPER CARD ================= -->
-
-        <section class="developer-card">
-
-            <div class="developer-icon">
-
-                <svg viewBox="0 0 24 24">
-
-                    <path d="M8.5 9L5 12l3.5 3"/>
-
-                    <path d="M15.5 9L19 12l-3.5 3"/>
-
-                    <path d="M14 6l-4 12"/>
-
-                </svg>
-
-            </div>
-
-
-            <h2>
-                Info Developer
-            </h2>
-
-
-            <div class="developer-info">
-
-                <!-- DEVELOPER -->
-                <div class="info-row">
-
-                    <span class="info-name">
-                        Developer Website
-                    </span>
-
-                    <span class="info-value">
-                        Lintang Thanaka W.
-                    </span>
-
-                </div>
-
-
-                <!-- STATUS -->
-                <div class="info-row">
-
-                    <span class="info-name">
-                        Status Website
-                    </span>
-
-                    <span class="status-online">
-
-                        <span class="status-dot"></span>
-
-                        Online
-
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- ================= BOTTOM NAV ================= -->
-
-    <footer class="bottom-nav">
-
-        <!-- HOME -->
-        <a
-            href="../index.html"
-            class="bottom-item"
-        >
-
+    <nav class="sidebar-menu">
+        <a href="../index.html" class="sidebar-link">
             <svg viewBox="0 0 24 24">
                 <path d="M3 11.5L12 4l9 7.5"/>
                 <path d="M5.5 10v9.5h5v-6h3v6h5V10"/>
             </svg>
-
-            <span>
-                Home
-            </span>
-
+            <span>Home</span>
         </a>
 
-
-        <!-- INFO -->
-        <a
-            href="info.html"
-            class="bottom-item active"
-        >
-
+        <a href="info.html" class="sidebar-link active">
             <svg viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="9"/>
                 <path d="M12 10.5v6"/>
                 <path d="M12 7.5h.01"/>
             </svg>
-
-            <span>
-                Info
-            </span>
-
+            <span>Info</span>
         </a>
+    </nav>
+</aside>
 
-    </footer>
+<main class="main-content info-page">
+    <section class="info-header">
+        <span class="welcome-small">Information</span>
+        <h1>INFO</h1>
+        <p>Informasi mengenai website LINZZZSTOREE.</p>
+    </section>
 
+    <section class="developer-card">
+        <div class="developer-icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M8.5 9L5 12l3.5 3"/>
+                <path d="M15.5 9L19 12l-3.5 3"/>
+                <path d="M14 6l-4 12"/>
+            </svg>
+        </div>
 
-    <!-- JS -->
-    <script src="../assets/js/script.js"></script>
+        <h2>Info Developer</h2>
 
+        <div class="developer-info">
+            <div class="info-row">
+                <span class="info-name">Developer Website</span>
+                <span class="info-value">Lintang Thanaka W.</span>
+            </div>
+
+            <div class="info-row">
+                <span class="info-name">Status Website</span>
+
+                <span class="status-online">
+                    <span class="status-dot"></span>
+                    Online
+                </span>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bottom-nav">
+    <a href="../index.html" class="bottom-item">
+        <svg viewBox="0 0 24 24">
+            <path d="M3 11.5L12 4l9 7.5"/>
+            <path d="M5.5 10v9.5h5v-6h3v6h5V10"/>
+        </svg>
+        <span>Home</span>
+    </a>
+
+    <a href="info.html" class="bottom-item active">
+        <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 10.5v6"/>
+            <path d="M12 7.5h.01"/>
+        </svg>
+        <span>Info</span>
+    </a>
+</footer>
+
+<script src="../assets/js/script.js"></script>
 </body>
-
 </html>

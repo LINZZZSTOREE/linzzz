@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090d14">
+    <title>Digital Store - LINZZZSTOREE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/digital_store.css">
+</head>
+
+<body>
+
+<header class="header">
+    <button class="menu-btn" id="menuBtn" aria-label="Buka sidebar">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <a href="../index.html" class="brand">LINZZZSTOREE</a>
+</header>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <span class="sidebar-brand">LINZZZSTOREE</span>
+
+        <button class="close-sidebar" id="closeSidebar" aria-label="Tutup sidebar">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <nav class="sidebar-menu">
+        <a href="../index.html" class="sidebar-link">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+
+        <a href="digital_store.html" class="sidebar-link active">
+            <i class="fa-solid fa-store"></i>
+            <span>Digital Store</span>
+        </a>
+
+        <a href="info.html" class="sidebar-link">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Info</span>
+        </a>
+    </nav>
+</aside>
+
+<main class="main-content">
+    <section class="welcome">
+        <span class="welcome-small">Welcome to</span>
+        <h1>DIGITAL STORE</h1>
+        <p>Pilih produk dan layanan digital yang kamu butuhkan.</p>
+    </section>
+
+    <section class="category-section">
+        <div class="category-strip" id="categoryStrip">
+            <button class="category-chip active" data-category="all">Semua</button>
+        </div>
+    </section>
+
+    <div class="product-header">
+        <h2>Produk</h2>
+        <span id="productCount">0 Produk</span>
+    </div>
+
+    <div class="loading-box" id="loadingBox">
+        <div class="spinner"></div>
+        <p>Memuat produk...</p>
+    </div>
+
+    <div class="empty-state hidden" id="emptyState">
+        <i class="fa-solid fa-box-open"></i>
+        <h3>Belum Ada Produk</h3>
+        <p>Produk pada kategori ini belum tersedia.</p>
+    </div>
+
+    <section class="product-grid" id="productGrid"></section>
+</main>
+
+<div class="modal-overlay" id="productModal">
+    <div class="product-modal">
+
+        <button class="modal-close" id="closeProductModal" aria-label="Tutup">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="modal-product-image">
+            <img id="modalProductImage" src="" alt="">
+        </div>
+
+        <div class="modal-product-body">
+            <h2 id="modalProductName">Produk</h2>
+            <p class="modal-description" id="modalProductDescription"></p>
+
+            <div class="modal-section-title">Pilih Harga</div>
+            <div class="price-list" id="priceList"></div>
+
+            <div class="quantity-area">
+                <div>
+                    <span class="quantity-label">Jumlah</span>
+                    <small>Tentukan jumlah pesanan</small>
+                </div>
+
+                <div class="quantity-control">
+                    <button id="minusQty" type="button">−</button>
+                    <span id="quantity">1</span>
+                    <button id="plusQty" type="button">+</button>
+                </div>
+            </div>
+
+            <div class="total-area">
+                <span>Total</span>
+                <strong id="totalPrice">Rp0</strong>
+            </div>
+
+            <button class="buy-button" id="buyNowButton">
+                <i class="fa-solid fa-bag-shopping"></i>
+                Beli Sekarang
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="paymentModal">
+    <div class="payment-modal">
+
+        <button class="modal-close" id="closePaymentModal" aria-label="Tutup">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="payment-icon">
+            <i class="fa-solid fa-wallet"></i>
+        </div>
+
+        <h2>Pilih Metode Bayar</h2>
+        <p class="payment-description">Pilih metode yang ingin digunakan.</p>
+
+        <button class="payment-option active" data-payment="whatsapp">
+            <div class="payment-left">
+                <div class="payment-logo whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+
+                <div>
+                    <strong>WhatsApp</strong>
+                    <span>Pesan melalui WhatsApp</span>
+                </div>
+            </div>
+
+            <div class="payment-radio active"></div>
+        </button>
+
+        <button class="payment-option disabled" data-payment="qris" disabled>
+            <div class="payment-left">
+                <div class="payment-logo">
+                    <i class="fa-solid fa-qrcode"></i>
+                </div>
+
+                <div>
+                    <strong>QRIS</strong>
+                    <span>Belum tersedia</span>
+                </div>
+            </div>
+        </button>
+
+        <div class="qris-info">
+            QRIS belum tersedia. Silakan gunakan metode WhatsApp terlebih dahulu.
+        </div>
+
+        <button class="confirm-button" id="confirmPayment">Konfirmasi</button>
+    </div>
+</div>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/digital_store.js"></script>
+</body>
+</html>
