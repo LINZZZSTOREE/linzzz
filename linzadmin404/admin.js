@@ -25,6 +25,19 @@ const imagePreviewBox = document.getElementById("imagePreviewBox");
 const priceRows = document.getElementById("priceRows");
 const addPriceButton = document.getElementById("addPriceButton");
 
+const editProductCard = document.getElementById("editProductCard");
+const editProductForm = document.getElementById("editProductForm");
+const editProductId = document.getElementById("editProductId");
+const editProductCategory = document.getElementById("editProductCategory");
+const editProductImage = document.getElementById("editProductImage");
+const editImagePreview = document.getElementById("editImagePreview");
+const editImagePreviewBox = document.getElementById("editImagePreviewBox");
+const editProductName = document.getElementById("editProductName");
+const editProductDescription = document.getElementById("editProductDescription");
+const editPriceRows = document.getElementById("editPriceRows");
+const addEditPriceButton = document.getElementById("addEditPriceButton");
+const cancelEditButton = document.getElementById("cancelEditButton");
+
 function backendReady() {
     return API_BASE && !API_BASE.includes("GANTI_USERNAME");
 }
@@ -164,6 +177,7 @@ async function loadAdminData() {
 function renderAdminCategories() {
     categoryAdminList.innerHTML = "";
     productCategory.innerHTML = `<option value="">Pilih kategori</option>`;
+    editProductCategory.innerHTML = `<option value="">Pilih kategori</option>`;
 
     categories.forEach(category => {
         const chip = document.createElement("span");
@@ -175,6 +189,11 @@ function renderAdminCategories() {
         option.value = category.id;
         option.textContent = category.name;
         productCategory.appendChild(option);
+
+        const editOption = document.createElement("option");
+        editOption.value = category.id;
+        editOption.textContent = category.name;
+        editProductCategory.appendChild(editOption);
     });
 }
 
@@ -203,29 +222,52 @@ categoryForm.addEventListener("submit", async event => {
     await loadAdminData();
 });
 
-function addPriceRow() {
+function createPriceRow(container, label = "", price = "") {
     const row = document.createElement("div");
     row.className = "price-row";
 
     row.innerHTML = `
-        <input type="text" class="price-label" placeholder="Contoh: DANA 10K" required>
-        <input type="number" class="price-value" placeholder="Harga" min="0" required>
+        <input
+            type="text"
+            class="price-label"
+            placeholder="Contoh: DANA 10K"
+            value="${escapeAttribute(label)}"
+            required
+        >
+
+        <input
+            type="number"
+            class="price-value"
+            placeholder="Harga"
+            min="0"
+            value="${escapeAttribute(price)}"
+            required
+        >
+
         <button type="button" class="delete-price">
             <i class="fa-solid fa-trash"></i>
         </button>
     `;
 
     row.querySelector(".delete-price").addEventListener("click", () => {
-        if (document.querySelectorAll(".price-row").length > 1) {
+        if (container.querySelectorAll(".price-row").length > 1) {
             row.remove();
         }
     });
 
-    priceRows.appendChild(row);
+    container.appendChild(row);
+}
+
+function addPriceRow() {
+    createPriceRow(priceRows);
 }
 
 addPriceButton.addEventListener("click", addPriceRow);
 addPriceRow();
+
+addEditPriceButton.addEventListener("click", () => {
+    createPriceRow(editPriceRows);
+});
 
 productImage.addEventListener("change", () => {
     const file = productImage.files[0];
@@ -239,19 +281,32 @@ productImage.addEventListener("change", () => {
     imagePreviewBox.classList.remove("hidden");
 });
 
-productForm.addEventListener("submit", async event => {
-    event.preventDefault();
+editProductImage.addEventListener("change", () => {
+    const file = editProductImage.files[0];
 
-    const priceLabels = document.querySelectorAll(".price-label");
-    const priceValues = document.querySelectorAll(".price-value");
-    const prices = [];
+    if (!file) return;
 
-    priceLabels.forEach((label, index) => {
-        prices.push({
-            label: label.value,
-            price: Number(priceValues[index].value)
+    editImagePreview.src = URL.createObjectURL(file);
+    editImagePreviewBox.classList.remove("hidden");
+});
+
+function collectPrices(container) {
+    const labels = container.querySelectorAll(".price-label");
+    const values = container.querySelectorAll(".price-value");
+    const result = [];
+
+    labels.forEach((label, index) => {
+        result.push({
+            label: label.value.trim(),
+            price: Number(values[index].value)
         });
     });
+
+    return result;
+}
+
+productForm.addEventListener("submit", async event => {
+    event.preventDefault();
 
     const formData = new FormData();
 
@@ -259,7 +314,7 @@ productForm.addEventListener("submit", async event => {
     formData.append("name", document.getElementById("productName").value);
     formData.append("description", document.getElementById("productDescription").value);
     formData.append("image", productImage.files[0]);
-    formData.append("prices", JSON.stringify(prices));
+    formData.append("prices", JSON.stringify(collectPrices(priceRows)));
 
     const response = await apiFetch("/api/admin/products", {
         method: "POST",
@@ -282,6 +337,80 @@ productForm.addEventListener("submit", async event => {
     await loadAdminData();
 });
 
+function openEditProduct(product) {
+    editProductId.value = product.id;
+    editProductCategory.value = String(product.category_id);
+    editProductName.value = product.name;
+    editProductDescription.value = product.description || "";
+    editProductImage.value = "";
+
+    editImagePreview.src = getImageUrl(product.image_url);
+    editImagePreviewBox.classList.remove("hidden");
+
+    editPriceRows.innerHTML = "";
+
+    if (product.prices && product.prices.length) {
+        product.prices.forEach(item => {
+            createPriceRow(editPriceRows, item.label, item.price);
+        });
+    } else {
+        createPriceRow(editPriceRows);
+    }
+
+    editProductCard.classList.remove("hidden");
+
+    editProductCard.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+function closeEditProduct() {
+    editProductForm.reset();
+    editPriceRows.innerHTML = "";
+    editProductCard.classList.add("hidden");
+}
+
+cancelEditButton.addEventListener("click", closeEditProduct);
+
+editProductForm.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const productId = editProductId.value;
+
+    if (!productId) {
+        showToast("Produk tidak ditemukan");
+        return;
+    }
+
+    const formData = new FormData();
+
+    formData.append("category_id", editProductCategory.value);
+    formData.append("name", editProductName.value);
+    formData.append("description", editProductDescription.value);
+    formData.append("prices", JSON.stringify(collectPrices(editPriceRows)));
+
+    if (editProductImage.files[0]) {
+        formData.append("image", editProductImage.files[0]);
+    }
+
+    const response = await apiFetch(`/api/admin/products/${productId}`, {
+        method: "PUT",
+        body: formData
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+        showToast(result.error || "Gagal mengedit produk");
+        return;
+    }
+
+    showToast("Produk berhasil diperbarui");
+    closeEditProduct();
+    await loadAdminData();
+});
+
 function getImageUrl(path) {
     if (path?.startsWith("http")) return path;
     return API_BASE + path;
@@ -291,6 +420,14 @@ function escapeHtml(text) {
     const div = document.createElement("div");
     div.textContent = text || "";
     return div.innerHTML;
+}
+
+function escapeAttribute(value) {
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
 }
 
 function renderAdminProducts() {
@@ -311,12 +448,30 @@ function renderAdminProducts() {
         item.className = "admin-product-item";
 
         item.innerHTML = `
-            <img src="${getImageUrl(product.image_url)}" alt="">
-            <div>
-                <strong>${escapeHtml(product.name)}</strong>
-                <span>${product.prices.length} pilihan harga</span>
+            <div class="admin-product-main">
+                <img src="${getImageUrl(product.image_url)}" alt="">
+
+                <div class="admin-product-info">
+                    <strong>${escapeHtml(product.name)}</strong>
+                    <span>${product.prices.length} pilihan harga</span>
+                </div>
+            </div>
+
+            <div class="admin-product-actions">
+                <button
+                    type="button"
+                    class="product-edit-button"
+                    aria-label="Edit ${escapeAttribute(product.name)}"
+                    title="Edit produk"
+                >
+                    <i class="fa-solid fa-pen"></i>
+                </button>
             </div>
         `;
+
+        item.querySelector(".product-edit-button").addEventListener("click", () => {
+            openEditProduct(product);
+        });
 
         list.appendChild(item);
     });

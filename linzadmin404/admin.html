@@ -194,6 +194,68 @@
                 </form>
             </div>
 
+            <div class="admin-card hidden" id="editProductCard">
+                <div class="edit-title-row">
+                    <div>
+                        <h2>Edit Produk</h2>
+                        <p>Ubah kategori, foto, nama, deskripsi, dan list harga produk.</p>
+                    </div>
+
+                    <button type="button" class="small-button danger-outline" id="cancelEditButton">
+                        Batal
+                    </button>
+                </div>
+
+                <form id="editProductForm" enctype="multipart/form-data">
+                    <input type="hidden" id="editProductId">
+
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <select id="editProductCategory" required>
+                            <option value="">Pilih kategori</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Foto Produk</label>
+                        <input type="file" id="editProductImage" accept="image/png,image/jpeg,image/webp">
+                        <small class="field-note">Kosongkan jika tidak ingin mengganti foto.</small>
+                    </div>
+
+                    <div class="image-preview" id="editImagePreviewBox">
+                        <img id="editImagePreview" src="" alt="">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nama Produk</label>
+                        <input type="text" id="editProductName" placeholder="Nama produk" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Deskripsi</label>
+                        <textarea id="editProductDescription" placeholder="Deskripsi produk..." rows="4" required></textarea>
+                    </div>
+
+                    <div class="price-header">
+                        <div>
+                            <h3>List Harga</h3>
+                            <small>Edit atau tambah pilihan harga produk.</small>
+                        </div>
+
+                        <button type="button" id="addEditPriceButton" class="small-button">
+                            + Harga
+                        </button>
+                    </div>
+
+                    <div id="editPriceRows" class="price-rows"></div>
+
+                    <button type="submit" class="primary-button edit-save-button">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        Simpan Perubahan
+                    </button>
+                </form>
+            </div>
+
             <div class="admin-card">
                 <h2>Produk Tersimpan</h2>
                 <div class="admin-product-list" id="adminProductList"></div>
@@ -204,7 +266,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script src="../assets/js/config.js?v=2"></script>
-<script src="admin.js?v=2"></script>
+<script src="../assets/js/config.js"></script>
+<script src="admin.js"></script>
 </body>
 </html>
