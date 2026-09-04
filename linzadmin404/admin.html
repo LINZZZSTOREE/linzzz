@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090d14">
+    <title>Admin - LINZZZSTOREE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+<section class="login-page" id="loginPage">
+    <div class="login-box">
+        <div class="login-logo">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <span class="login-small">LINZZZSTOREE</span>
+        <h1>Admin Login</h1>
+        <p>Masuk untuk mengelola Digital Store.</p>
+
+        <form id="loginForm">
+            <label>Username</label>
+
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="username" placeholder="Username" autocomplete="username" required>
+            </div>
+
+            <label>Password</label>
+
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+            </div>
+
+            <p class="login-error" id="loginError"></p>
+
+            <button type="submit" class="primary-button">
+                Login Admin
+            </button>
+        </form>
+    </div>
+</section>
+
+<section class="admin-app hidden" id="adminApp">
+    <header class="admin-header">
+        <button class="menu-btn" id="adminMenuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="admin-brand">LINZZZ ADMIN</div>
+        <div class="admin-time" id="adminTime">00:00:00</div>
+    </header>
+
+    <div class="sidebar-overlay" id="adminSidebarOverlay"></div>
+
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-profile">
+            <div class="profile-icon">
+                <i class="fa-solid fa-user-shield"></i>
+            </div>
+
+            <div>
+                <span>Administrator</span>
+                <small>LINZZZSTOREE</small>
+            </div>
+        </div>
+
+        <nav>
+            <button class="nav-item active" data-page="dashboard">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </button>
+
+            <button class="nav-item" data-page="store">
+                <i class="fa-solid fa-store"></i>
+                LINZZZSTOREE
+            </button>
+        </nav>
+
+        <button class="logout-button" id="logoutButton">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </button>
+    </aside>
+
+    <main class="admin-main">
+        <section class="admin-page" id="dashboardPage">
+            <span class="page-small">Welcome back</span>
+            <h1>Admin</h1>
+            <p>Kelola website LINZZZSTOREE dari dashboard ini.</p>
+
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <i class="fa-solid fa-layer-group"></i>
+
+                    <div>
+                        <strong id="categoryTotal">0</strong>
+                        <span>Kategori</span>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <i class="fa-solid fa-box"></i>
+
+                    <div>
+                        <strong id="productTotal">0</strong>
+                        <span>Produk</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="admin-page hidden" id="storePage">
+            <span class="page-small">Store Management</span>
+            <h1>LINZZZSTOREE</h1>
+            <p>Tambahkan kategori dan produk Digital Store.</p>
+
+            <div class="admin-card">
+                <h2>Tambah Kategori</h2>
+                <p>Contoh: Top Up, Pulsa, Paket Data.</p>
+
+                <form id="categoryForm">
+                    <div class="form-group">
+                        <label>Nama Kategori</label>
+                        <input type="text" id="categoryName" placeholder="Contoh: Top Up" required>
+                    </div>
+
+                    <button class="primary-button" type="submit">
+                        <i class="fa-solid fa-plus"></i>
+                        Tambah Kategori
+                    </button>
+                </form>
+
+                <div class="category-admin-list" id="categoryAdminList"></div>
+            </div>
+
+            <div class="admin-card">
+                <h2>Tambah Produk</h2>
+                <p>Isi informasi produk dan daftar harga.</p>
+
+                <form id="productForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Kategori</label>
+
+                        <select id="productCategory" required>
+                            <option value="">Pilih kategori</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Foto Produk</label>
+                        <input type="file" id="productImage" accept="image/png,image/jpeg,image/webp" required>
+                    </div>
+
+                    <div class="image-preview hidden" id="imagePreviewBox">
+                        <img id="imagePreview" src="" alt="">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nama Produk</label>
+                        <input type="text" id="productName" placeholder="Contoh: DANA" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Deskripsi</label>
+                        <textarea id="productDescription" placeholder="Deskripsi produk..." rows="4" required></textarea>
+                    </div>
+
+                    <div class="price-header">
+                        <div>
+                            <h3>List Harga</h3>
+                            <small>Bisa tambah sebanyak yang dibutuhkan.</small>
+                        </div>
+
+                        <button type="button" id="addPriceButton" class="small-button">
+                            + Harga
+                        </button>
+                    </div>
+
+                    <div id="priceRows" class="price-rows"></div>
+
+                    <button type="submit" class="primary-button">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        Tambah Produk
+                    </button>
+                </form>
+            </div>
+
+            <div class="admin-card">
+                <h2>Produk Tersimpan</h2>
+                <div class="admin-product-list" id="adminProductList"></div>
+            </div>
+        </section>
+    </main>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/js/config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
