@@ -1,244 +1,76 @@
-// ================= SIDEBAR =================
+const menuBtn = document.getElementById("menuBtn");
+const closeSidebar = document.getElementById("closeSidebar");
+const sidebar = document.getElementById("sidebar");
+const sidebarOverlay = document.getElementById("sidebarOverlay");
 
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const closeSidebar =
-    document.getElementById("closeSidebar");
-
-const sidebar =
-    document.getElementById("sidebar");
-
-const sidebarOverlay =
-    document.getElementById("sidebarOverlay");
-
-
-// BUKA SIDEBAR
 function openSidebar() {
-
-    if (!sidebar || !sidebarOverlay) {
-        return;
-    }
+    if (!sidebar || !sidebarOverlay) return;
 
     sidebar.classList.add("show");
-
     sidebarOverlay.classList.add("show");
-
-    document.body.style.overflow =
-        "hidden";
+    document.body.style.overflow = "hidden";
 }
 
-
-// TUTUP SIDEBAR
 function hideSidebar() {
-
-    if (!sidebar || !sidebarOverlay) {
-        return;
-    }
+    if (!sidebar || !sidebarOverlay) return;
 
     sidebar.classList.remove("show");
-
     sidebarOverlay.classList.remove("show");
-
-    document.body.style.overflow =
-        "";
-
+    document.body.style.overflow = "";
 }
 
+if (menuBtn) menuBtn.addEventListener("click", openSidebar);
+if (closeSidebar) closeSidebar.addEventListener("click", hideSidebar);
+if (sidebarOverlay) sidebarOverlay.addEventListener("click", hideSidebar);
 
-// MENU BUTTON
-if (menuBtn) {
+document.querySelectorAll(".sidebar-link").forEach(link => {
+    link.addEventListener("click", hideSidebar);
+});
 
-    menuBtn.addEventListener(
-        "click",
-        openSidebar
-    );
+const cards = document.querySelectorAll(".service-card");
+const modalWrapper = document.getElementById("modalWrapper");
+const modalTitle = document.getElementById("modalTitle");
+const modalClose = document.getElementById("modalClose");
 
-}
-
-
-// CLOSE BUTTON
-if (closeSidebar) {
-
-    closeSidebar.addEventListener(
-        "click",
-        hideSidebar
-    );
-
-}
-
-
-// OVERLAY
-if (sidebarOverlay) {
-
-    sidebarOverlay.addEventListener(
-        "click",
-        hideSidebar
-    );
-
-}
-
-
-// TUTUP SIDEBAR SAAT LINK DIKLIK
-const sidebarLinks =
-    document.querySelectorAll(
-        ".sidebar-link"
-    );
-
-
-sidebarLinks.forEach(
-    (link) => {
-
-        link.addEventListener(
-            "click",
-            () => {
-
-                hideSidebar();
-
-            }
-        );
-
-    }
-);
-
-
-
-// ================= POPUP =================
-
-const cards =
-    document.querySelectorAll(
-        ".service-card"
-    );
-
-
-const modalWrapper =
-    document.getElementById(
-        "modalWrapper"
-    );
-
-
-const modalTitle =
-    document.getElementById(
-        "modalTitle"
-    );
-
-
-const modalClose =
-    document.getElementById(
-        "modalClose"
-    );
-
-
-// BUKA POPUP
 function openModal(featureName) {
+    if (!modalWrapper || !modalTitle) return;
 
-    if (
-        !modalWrapper ||
-        !modalTitle
-    ) {
-        return;
-    }
-
-    modalTitle.textContent =
-        `${featureName} Sedang Dibuat`;
-
-    modalWrapper.classList.add(
-        "show"
-    );
-
-    document.body.style.overflow =
-        "hidden";
-
+    modalTitle.textContent = `${featureName} Sedang Dibuat`;
+    modalWrapper.classList.add("show");
+    document.body.style.overflow = "hidden";
 }
 
-
-// TUTUP POPUP
 function closeModal() {
+    if (!modalWrapper) return;
 
-    if (!modalWrapper) {
-        return;
-    }
-
-    modalWrapper.classList.remove(
-        "show"
-    );
-
-    document.body.style.overflow =
-        "";
-
+    modalWrapper.classList.remove("show");
+    document.body.style.overflow = "";
 }
 
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        const link = card.dataset.link;
 
-// CARD CLICK
-cards.forEach(
-    (card) => {
+        if (link) {
+            window.location.href = link;
+            return;
+        }
 
-        card.addEventListener(
-            "click",
-            () => {
+        openModal(card.dataset.feature);
+    });
+});
 
-                const featureName =
-                    card.dataset.feature;
+if (modalClose) modalClose.addEventListener("click", closeModal);
 
-                openModal(
-                    featureName
-                );
-
-            }
-        );
-
-    }
-);
-
-
-// TOMBOL OKE
-if (modalClose) {
-
-    modalClose.addEventListener(
-        "click",
-        closeModal
-    );
-
-}
-
-
-// CLICK AREA LUAR POPUP
 if (modalWrapper) {
-
-    modalWrapper.addEventListener(
-        "click",
-        (event) => {
-
-            if (
-                event.target
-                === modalWrapper
-            ) {
-
-                closeModal();
-
-            }
-
-        }
-    );
-
+    modalWrapper.addEventListener("click", event => {
+        if (event.target === modalWrapper) closeModal();
+    });
 }
 
-
-// ================= ESC BUTTON =================
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (
-            event.key === "Escape"
-        ) {
-
-            closeModal();
-
-            hideSidebar();
-
-        }
-
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+        closeModal();
+        hideSidebar();
     }
-);
+});
